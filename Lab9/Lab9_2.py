@@ -1,29 +1,44 @@
-from math import sqrt
+from math import sqrt, isfinite
 
-i = 0
+calculations = 0
 
 while True:
     try:
-        i += 1
-        print(f"\n---Розрахунок {i}---\n")
+        calculations += 1
+        print(f"\n---Розрахунок {calculations}---\n")
         
-        a = float(input("Введіть сторону a: "))
-        b = float(input("Введіть сторону b: "))
-        c = float(input("Введіть сторону c: "))
+        triangle_side_a = float(input("Введіть сторону a: "))
+        triangle_side_b = float(input("Введіть сторону b: "))
+        triangle_side_c = float(input("Введіть сторону c: "))
 
-        if (a + b <= c) or (a + c <= b) or (b + c <= a):
-            print(f"\nПри a={a}, b={b}, c={c}: Трикутник не існує!")
+        if (not all(isfinite(side) and side > 0 
+            for side in (triangle_side_a, triangle_side_b, triangle_side_c))
+            or (triangle_side_a + triangle_side_b <= triangle_side_c)
+            or (triangle_side_a + triangle_side_c <= triangle_side_b)
+            or (triangle_side_b + triangle_side_c <= triangle_side_a)
+            ):
+            print(f"\nПри a = {triangle_side_a}, b = {triangle_side_b}, "
+                              f"c = {triangle_side_c}: Трикутник не існує!")
+
         else:
-            p = (a + b + c) / 2
-            hc = (2 / c) * sqrt(p * (p - a) * (p - b) * (p - c))
-            mc = 0.5 * sqrt(2 * a**2 + 2 * b**2 - c**2)
-
-            print(f"\nПри a={a}, b={b}, c={c}: "
-                  f"Висота (hc)={hc:.2f}, Медіана (mc)={mc:.2f}")
+            triangle_half_perimeter = (triangle_side_a 
+                                        + triangle_side_b
+                                        + triangle_side_c) / 2
+            
+            height_to_side_c = (2 / triangle_side_c) * sqrt(max(0.0, triangle_half_perimeter
+                                * (triangle_half_perimeter - triangle_side_a) 
+                                * (triangle_half_perimeter - triangle_side_b)
+                                * (triangle_half_perimeter - triangle_side_c)))
+            
+            median_to_side_c = 0.5 * sqrt(max(0.0, 2 * triangle_side_a**2
+                                              + 2 * triangle_side_b**2 - triangle_side_c**2))
+            
+            print(f"\nПри a={triangle_side_a}, b={triangle_side_b}, c={triangle_side_c}: "
+                  f"Висота (hc)={height_to_side_c:.2f}, Медіана (mc)={median_to_side_c:.2f}")
     except ValueError:
         print("\nПомилка: Будь ласка, введіть коректне число!")
-        i -= 1
+        calculations -= 1
 
     user_ans = input("\nБажаєте продовжити? (y/n): ")   
-    if user_ans.casefold() != "y":
+    if user_ans.strip().casefold() != "y":
         break
