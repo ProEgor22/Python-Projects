@@ -30,7 +30,7 @@ print("-----------------------------\n"
        f"Умова: y > {reference_value}\n"
        f"Кількість значень, що відповідають умові: {num_total_value}")
 
-if num_total_value <= 1:
+if num_total_value == 0:
     print(f"Добутку немає!")
 else:
     print(f"Добуток цих значень y: {num_multiplication_value:.4f}")
