@@ -45,7 +45,7 @@ while True:
                         if not isfinite(number):
                             raise ValueError
                         elif number == 0:
-                            print("\nПрограма завершена.\n")
+                            print("\nВведення завершено.\n")
                             break
 
                         num_list.append(number)
