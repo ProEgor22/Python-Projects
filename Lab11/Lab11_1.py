@@ -12,22 +12,24 @@ while True:
             case 2:
                 #----Zavdanya 2----
                 num_list = []
+                i = 0
 
-                for i in range(1, 11):
-
+                while i <= 10:
                     if i % 2 != 0:
                         num_list.append(i)
+                    i += 1
 
                 print(f"\nЕлементи: {num_list}\n")
 
             case 3:
                 #----Zavdanya 3----
                 num_list = []
+                i = 0
 
-                for i in range(1, 21):
-
+                while i <= 20:
                     if i % 2 == 0:
                         num_list.append(i)
+                    i += 1
 
                 print(f"\nЕлементи: {num_list}\n")
             
