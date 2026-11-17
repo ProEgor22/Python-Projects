@@ -5,15 +5,15 @@ while True:
     usr_input = input(
         "Введіть масив через кому (дробова частина через крапку, напр.: 1, 2.5, 3):  "
         )
-
-    try:
-        num_list_input = [float(x) for x in usr_input.split(",") if x.strip()]
-    except ValueError:
-        print("\nПомилка! Переконайтеся, що ви ввели лише числа, розділені комами.\n")
+    
+    if not usr_input.strip():
+        print("\nПомилка! Масив порожній.\n")
         continue
 
-    if not num_list_input:
-        print("\nПомилка! Масив порожній.\n")
+    try:
+        num_list_input = [float(x) for x in usr_input.split(",")]
+    except ValueError:
+        print("\nПомилка! Переконайтеся, що ви ввели лише числа, розділені комами.\n")
         continue
 
     if not all(isfinite(x) for x in num_list_input):
@@ -33,7 +33,7 @@ print("\n---РЕЗУЛЬТАТИ ОБЧИСЛЕННЯ---\n"
       f"\nМасив що обчислюється: {num_list_output}\n"
       )
 
-if len(num_list_output) <= 1:
+if len(num_list_output) == 0:
     print("Добутку немає.\n")
 else:
     print(f"Добуток елементів масиву: {prod(num_list_output):.4f}")
