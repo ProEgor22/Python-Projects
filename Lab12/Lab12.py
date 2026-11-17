@@ -22,7 +22,7 @@ while True:
 
     break
 
-num_list_output = [round(x, 4) for x in num_list_input if x >= reference_value]
+num_list_output = [x for x in num_list_input if x >= reference_value]
 
 print("\n---РЕЗУЛЬТАТИ ОБЧИСЛЕННЯ---\n"
       f"Порівняльна константа c = {reference_value}\n"
