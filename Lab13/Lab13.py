@@ -1,19 +1,19 @@
 from math import isfinite
 
-def num_is_even(number):
+def determine_if_num_is_even(number):
     return number % 2 == 0
 
-def rectangle_area(width, height):
+def calculate_rectangle_area(width, height):
     return width * height
 
-def num_to_the_power(base, exponent):
+def calculate_num_to_the_power(base, exponent):
     return base ** exponent
 
 def count_words(sentence):
     words_list = [words for words in sentence.split(" ") if words.strip()]
     return len(words_list)
 
-def wind_properties(velocity):
+def define_wind_properties(velocity):
     speed = abs(velocity)
     if speed < 1:
         return "Штиль"
@@ -41,7 +41,7 @@ while True:
                     print("\n----Завдання №2: Перевірка на парність----")
                     try:
                         number = int(input("\nВведіть бажане число: "))
-                        is_even_result = num_is_even(number)
+                        is_even_result = determine_if_num_is_even(number)
 
                         if is_even_result:
                             print("\nЧисло парне!")
@@ -67,7 +67,7 @@ while True:
                             )):
                             raise ValueError
 
-                        rect_surface_area = rectangle_area(rect_width, rect_height)
+                        rect_surface_area = calculate_rectangle_area(rect_width, rect_height)
                         print(f"\nПлоща прямокутника: {rect_surface_area:.2f}")
 
                     except ValueError:
@@ -88,7 +88,7 @@ while True:
                         if not all((isfinite(base), isfinite(exponent))):
                             raise ValueError
 
-                        result_num = num_to_the_power(base, exponent)
+                        result_num = calculate_num_to_the_power(base, exponent)
                         print(f"\nРезультат: {result_num:.2f}")
                         
                     except ValueError:
@@ -126,7 +126,7 @@ while True:
                         if not isfinite(wind_velocity):
                             raise ValueError
 
-                        wind_status = wind_properties(wind_velocity)
+                        wind_status = define_wind_properties(wind_velocity)
                         print(f"\nВітер: {wind_status}")
 
                     except ValueError:
