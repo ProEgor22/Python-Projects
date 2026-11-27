@@ -108,7 +108,7 @@ while True:
                     sentence = input("\nВведіть слова через пробіл: ")
 
                     if not sentence.strip():
-                        print("\nМасив порожній!")
+                        print("\nРечення порожнє!")
                         continue
 
                     words_value = count_words(sentence)
